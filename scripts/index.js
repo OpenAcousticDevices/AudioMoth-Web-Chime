@@ -144,7 +144,7 @@ function checkMobile () {
 
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
-        iphoneWarning.innerText = 'Adjust volume to 3/4 full and ensure that silent mode is switched off.';
+        iphoneWarning.innerHTML = 'Adjust volume to 3/4 full and ensure<br>that silent mode is switched off.';
 
         setTimeout(() => {
 

@@ -210,14 +210,14 @@ window.addEventListener('load', () => {
 
         );
 
+        navigator.serviceWorker.ready.then(() => {
+
+            console.log('Ready');
+
+            loadPage();
+
+        });
+
     }
-
-    navigator.serviceWorker.ready.then(() => {
-
-        console.log('Ready');
-
-        loadPage();
-
-    });
 
 });

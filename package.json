@@ -1,0 +1,20 @@
+{
+  "name": "AudioMoth-Web-Chime",
+  "version": "1.0.0",
+  "description": "A web-based application for setting the time of AudioMoth devices using an encoded chime.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenAcousticDevices/AudioMoth-Web-Chime.git"
+  },
+  "author": "openacousticdevices.info",
+  "license": "MIT",
+  "homepage": "https://github.com/OpenAcousticDevices/AudioMoth-Web-Chime#readme",
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^5.0.0"
+  }
+}

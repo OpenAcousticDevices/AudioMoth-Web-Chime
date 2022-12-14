@@ -160,6 +160,18 @@ function checkMobile () {
 
 }
 
+function loadPage () {
+
+    // Start page
+
+    checkMobile();
+    updateTime();
+
+    chimeButtonTop.addEventListener('click', handleChime);
+    chimeButtonBottom.addEventListener('click', handleChime);
+
+}
+
 window.addEventListener('load', () => {
 
     audioMothChimeConnector = new AudioMothChimeConnector();
@@ -177,6 +189,8 @@ window.addEventListener('load', () => {
     if (!('serviceWorker' in navigator)) {
 
         console.log('Service workers not supported');
+
+        loadPage();
 
     } else {
 
@@ -202,13 +216,7 @@ window.addEventListener('load', () => {
 
         console.log('Ready');
 
-        // Start page
-
-        checkMobile();
-        updateTime();
-
-        chimeButtonTop.addEventListener('click', handleChime);
-        chimeButtonBottom.addEventListener('click', handleChime);
+        loadPage();
 
     });
 

@@ -8,11 +8,13 @@
 
 let audioMothChimeConnector;
 
+let timeHolder, warningHolder;
+
 let iphoneWarning;
 
 let timeLabel, timeZoneLabel;
 
-let chimeButtonTop, chimeButtonBottom;
+let chimeButton;
 
 // Keep time UI updated
 
@@ -105,15 +107,13 @@ function updateTimeZone () {
 
 function handleChime () {
 
-    chimeButtonTop.disabled = true;
-    chimeButtonBottom.disabled = true;
+    chimeButton.disabled = true;
 
     const date = new Date();
 
     audioMothChimeConnector.playTime(date, () => {
 
-        chimeButtonTop.disabled = false;
-        chimeButtonBottom.disabled = false;
+        chimeButton.disabled = false;
 
     });
 
@@ -125,20 +125,8 @@ function checkMobile () {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
-        chimeButtonTop.style.display = 'none';
-        chimeButtonBottom.style.display = '';
-
-        // Increase UI scale
-
-        timeLabel.style.fontSize = '100px';
-        timeLabel.style.height = '100px';
-        timeZoneLabel.style.fontSize = '70px';
-        timeZoneLabel.style.height = '70px';
-
-    } else {
-
-        chimeButtonTop.style.display = '';
-        chimeButtonBottom.style.display = 'none';
+        warningHolder.style.marginTop = '30%';
+        timeHolder.style.marginTop = '50%';
 
     }
 
@@ -167,8 +155,7 @@ function loadPage () {
     checkMobile();
     updateTime();
 
-    chimeButtonTop.addEventListener('click', handleChime);
-    chimeButtonBottom.addEventListener('click', handleChime);
+    chimeButton.addEventListener('click', handleChime);
 
 }
 
@@ -176,13 +163,15 @@ window.addEventListener('load', () => {
 
     audioMothChimeConnector = new AudioMothChimeConnector();
 
+    timeHolder = document.getElementById('time-holder');
+    warningHolder = document.getElementById('warning-holder');
+
     iphoneWarning = document.getElementById('iphone-warning');
 
     timeLabel = document.getElementById('time-label');
     timeZoneLabel = document.getElementById('time-zone-label');
 
-    chimeButtonTop = document.getElementById('chime-button-top');
-    chimeButtonBottom = document.getElementById('chime-button-bottom');
+    chimeButton = document.getElementById('chime-button');
 
     // Register service worker
 
@@ -196,7 +185,7 @@ window.addEventListener('load', () => {
 
         // Ensure service worker is updated
 
-        navigator.serviceWorker.register('./worker.js?v=3').then(
+        navigator.serviceWorker.register('./worker.js?v=4').then(
             () => {
 
                 console.log('Service worker registered');

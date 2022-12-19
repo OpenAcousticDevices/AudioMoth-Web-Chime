@@ -126,7 +126,6 @@ function checkMobile () {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
         warningHolder.style.marginTop = '30%';
-        timeHolder.style.marginTop = '50%';
 
     }
 
@@ -185,7 +184,7 @@ window.addEventListener('load', () => {
 
         // Ensure service worker is updated
 
-        navigator.serviceWorker.register('./worker.js?v=4').then(
+        navigator.serviceWorker.register('./worker.js?v=5').then(
             () => {
 
                 console.log('Service worker registered');

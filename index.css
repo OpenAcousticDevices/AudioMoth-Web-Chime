@@ -1,0 +1,10 @@
+button {
+    background-color: #D8D8D8;
+    color: black;
+    border: none;
+    font-size: 40px;
+}
+
+button:disabled {
+    color: grey;
+}

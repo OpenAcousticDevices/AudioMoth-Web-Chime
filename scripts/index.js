@@ -8,7 +8,7 @@
 
 let audioMothChimeConnector;
 
-let timeHolder, warningHolder;
+let timeHolder;
 
 let iphoneWarning;
 
@@ -123,12 +123,6 @@ function handleChime () {
 
 function checkMobile () {
 
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-
-        warningHolder.style.marginTop = '30%';
-
-    }
-
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
         iphoneWarning.innerHTML = 'Adjust volume to 3/4 full and ensure<br>that silent mode is switched off.';
@@ -163,7 +157,6 @@ window.addEventListener('load', () => {
     audioMothChimeConnector = new AudioMothChimeConnector();
 
     timeHolder = document.getElementById('time-holder');
-    warningHolder = document.getElementById('warning-holder');
 
     iphoneWarning = document.getElementById('iphone-warning');
 
@@ -184,7 +177,7 @@ window.addEventListener('load', () => {
 
         // Ensure service worker is updated
 
-        navigator.serviceWorker.register('./worker.js?v=5').then(
+        navigator.serviceWorker.register('./worker.js?v=6').then(
             () => {
 
                 console.log('Service worker registered');

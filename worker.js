@@ -17,6 +17,7 @@ self.addEventListener('install', (e) => {
         const cache = await caches.open(cacheName);
 
         await cache.addAll(['./assets/favicon.png',
+            './index.css',
             './index.html',
             './scripts/index.js',
             './scripts/audiomothchime_connector.js',

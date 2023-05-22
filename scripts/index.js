@@ -22,9 +22,9 @@ function updateTime () {
 
     const currentDate = new Date();
 
-    const hours = String(currentDate.getHours()).padStart(2, '0');
-    const mins = String(currentDate.getMinutes()).padStart(2, '0');
-    const secs = String(currentDate.getSeconds()).padStart(2, '0');
+    const hours = String(currentDate.getUTCHours()).padStart(2, '0');
+    const mins = String(currentDate.getUTCMinutes()).padStart(2, '0');
+    const secs = String(currentDate.getUTCSeconds()).padStart(2, '0');
 
     let timeString = hours;
     timeString += ':';

@@ -4,25 +4,67 @@
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
         <link rel="icon" type="image/png" href="./assets/favicon.png">
         <link rel="stylesheet" href="./index.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>AudioMoth Chime</title>
     </head>
 
     <body style="background-color: #3D8E5A; font-family: Arial, Helvetica, sans-serif; color: #ffffff; min-height:100%; height: 90vh;">
 
-        <div id="time-holder" style="width: 100%; height: 80%; display: flex; justify-content: center; flex-direction: column;">
-            <p id="iphone-warning" style="font-size: 40px; height: 80px; transition: opacity 1s; text-align: center; margin-bottom: 250px;"></p>
-            <p id="time-label" style="font-size: 100px; height: 100px; margin: 0px; text-align: center;"></p>
-            <p id="time-zone-label" style="font-size: 50px; height: 50px; margin-top: 40px; text-align: center;"></p>
-        </div>
+        <div class="vertical-centre">
 
-        <footer style="position: fixed; bottom: 0px; width: 100%; text-align: center; height: 10vh;">
-            <button id="chime-button" style="width: 90%; height: 90%; margin-bottom: 10px;">Play Chime</button>
-        </footer>
+            <div class="container-fluid">
+    
+                <div class="row">
+                    <p id="iphone-warning" style="font-size: 30px; transition: opacity 1s; text-align: center; min-height: 90px;"></p>
+                </div>
+    
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-md-10 offset-md-1 border border-3 rounded-border" style="border-color: #919191 !important;">
+                        <p id="time-label" style="font-size: 80px; margin-top: 0px; margin-bottom: 0px; height: 100px; text-align: center;"></p>
+                        <p id="time-zone-label" style="font-size: 40px; margin-bottom: 10px; text-align: center;"></p>
+                    </div>
+                </div>
+    
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-md-10 offset-md-1 border border-3 rounded-border" style="border-color: #919191 !important;">
+                        <div class="row">
+                            <span id="lat-label" style="font-size: 60px; margin-top: 0px; margin-bottom: 0px; height: 80px; text-align: center; color: #919191;">0.000000°N</span>
+                            <span id="lon-label" style="font-size: 60px; margin-top: -15px; margin-bottom: 0px; height: 80px; text-align: center; color: #919191;">0.000000°E</span>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-md-10 offset-md-1" style="text-align: center; display: block;">
+                                <div class="form-switch" style="padding-left: 0px;">
+                                    <span id="location-switch-label" style="font-size: 40px; margin-right: 50px;">Location:</span>
+                                    <input class="form-check-input custom-control-input" type="checkbox" role="switch" style="width: 50px; height: 35px; margin-top: 15px;" id="location-switch">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row" style="margin-top: 20px; text-align: center;">
+                    <p id="waiting-label" style="font-size: 30px; min-height: 45px;"></p>
+                </div>
+
+                <div class="row" style="margin-top: 20px; text-align: center;">
+                    
+                </div>
+    
+                <div class="row" style="position: fixed; bottom: 0; width: 100%;">
+                    <div class="col-md-10 offset-md-1" style="padding-left: 0px; padding-right: 0px;">
+                        <button class="btn btn-light" id="chime-button" style="width: 100%; height: 70px; margin-bottom: 10px;"><span style="font-size: x-large;">Play Chime</span></button>
+                    </div>
+                </div>
+    
+            </div>
+
+        </div>
 
     </body>
 
     <script src="./scripts/audiomothchime_connector.js"></script>
     <script src="./scripts/audiomothchime.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="./scripts/index.js"></script>
 
 </html>

@@ -6,7 +6,7 @@
 
 /* global self, caches */
 
-const cacheName = 'audiomothchime-v1';
+const cacheName = 'audiomothchime-v6';
 
 self.addEventListener('install', (e) => {
 

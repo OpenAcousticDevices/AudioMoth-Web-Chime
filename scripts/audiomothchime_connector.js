@@ -13,9 +13,15 @@ var AudioMothChimeConnector = function () {
 
     const MINIMUM_DELAY = 200;
 
+    const MINUTES_IN_HOUR = 60;
+
     const LENGTH_OF_DEPLOYMENT_ID = 8;
 
     const MILLISECONDS_IN_SECOND = 1000;
+
+    const MINIMUM_TIME_ZONE_MINUTES = -12 * MINUTES_IN_HOUR;
+
+    const MAXIMUM_TIME_ZONE_MINUTES = 14 * MINUTES_IN_HOUR;
 
     const LATITUDE_PRECISION = 1000000;
     
@@ -39,15 +45,23 @@ var AudioMothChimeConnector = function () {
 
     /* Function to generate component data */
 
-    function encodeTime(date) {
+    function encodeTime(date, timeZoneMinutes) {
 
         const unixTime = Math.round(date.valueOf() / MILLISECONDS_IN_SECOND);
 
-        const timezoneMinutes = -date.getTimezoneOffset();
+        if (timeZoneMinutes !== undefined && timeZoneMinutes !== null && typeof timeZoneMinutes === 'number') {
+
+            timeZoneMinutes = Math.max(MINIMUM_TIME_ZONE_MINUTES, Math.min(MAXIMUM_TIME_ZONE_MINUTES, timeZoneMinutes));
+
+        } else {
+
+            timeZoneMinutes = -date.getTimezoneOffset();
+
+        }
 
         let bytes = littleEndianBytes(4, unixTime);
 
-        bytes = bytes.concat(littleEndianBytes(2, timezoneMinutes));
+        bytes = bytes.concat(littleEndianBytes(2, timeZoneMinutes));
 
         return bytes;
 
@@ -100,7 +114,7 @@ var AudioMothChimeConnector = function () {
 
     };
 
-    obj.playTime = function (date, latitude, longitude, callback) {
+    obj.playTime = function (date, timeZoneMinutes, latitude, longitude, callback) {
 
         const sendTime = new Date(date);
 
@@ -110,7 +124,7 @@ var AudioMothChimeConnector = function () {
 
         sendTime.setMilliseconds(sendTime.getMilliseconds() + delay);
 
-        let bytes = encodeTime(sendTime);
+        let bytes = encodeTime(sendTime, timeZoneMinutes);
 
         const locationValid = latitude !== undefined && latitude !== null && typeof latitude === 'number' && longitude !== undefined && longitude !== null && typeof longitude === 'number';
 
@@ -124,7 +138,7 @@ var AudioMothChimeConnector = function () {
 
     };
 
-    obj.playTimeAndDeploymentID = function (date, latitude, longitude, deploymentID, callback) {
+    obj.playTimeAndDeploymentID = function (date, timeZoneMinutes, latitude, longitude, deploymentID, callback) {
 
         const sendTime = new Date(date);
 
@@ -134,7 +148,7 @@ var AudioMothChimeConnector = function () {
 
         sendTime.setMilliseconds(sendTime.getMilliseconds() + delay);
        
-        let bytes = encodeTime(sendTime);
+        let bytes = encodeTime(sendTime, timeZoneMinutes);
 
         const locationValid = latitude !== undefined && latitude !== null && typeof latitude === 'number' && longitude !== undefined && longitude !== null && typeof longitude === 'number';
 
